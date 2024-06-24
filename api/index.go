@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	. "github.com/tbxark/g4vercel"
+	_ "github.com/tbxark/g4vercel"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
