@@ -11,8 +11,3 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	response := map[string]string{"message": "Hello, World!"}
 	json.NewEncoder(w).Encode(response)
 }
-
-func main() {
-	http.HandleFunc("/api", Handler)
-	http.ListenAndServe(":8080", nil)
-}
