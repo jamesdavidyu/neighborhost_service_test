@@ -44,7 +44,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	router := mux.NewRouter()
-	router.HandleFunc("/", getDump(db)).Methods("GET")
+	router.HandleFunc("/api/dump", getDump(db)).Methods("GET")
 	router.HandleFunc("/api/dump", createDump(db)).Methods("POST")
 
 	enhancedRouter := enableCORS(jsonContentTypeMiddleware(router))
