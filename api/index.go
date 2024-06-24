@@ -12,10 +12,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
-}
-
 type Dump struct {
 	Id       int     `json:"id"`
 	Date     string  `json:"date"`
@@ -26,8 +22,10 @@ type Dump struct {
 	Comments string  `json:"comments"`
 }
 
-func main() {
-	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+func Handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
+
+	db, err := sql.Open("postgres", os.Getenv("POSTGRES_URL"))
 	if err != nil {
 		log.Fatal(err)
 	}
