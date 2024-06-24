@@ -44,7 +44,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	router := mux.NewRouter()
-	router.HandleFunc("/api/dump", getDump(db)).Methods("GET")
+	router.HandleFunc("/", getDump(db)).Methods("GET")
 	router.HandleFunc("/api/dump", createDump(db)).Methods("POST")
 
 	enhancedRouter := enableCORS(jsonContentTypeMiddleware(router))
@@ -77,7 +77,7 @@ func jsonContentTypeMiddleware(next http.Handler) http.Handler {
 // controllers
 func getDump(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		rows, err := db.Query("SELECT * FROM dump")
+		rows, err := db.Query("SELECT * FROM yrm_data_dump")
 		if err != nil {
 			w.WriteHeader(http.StatusNotFound)
 			return
