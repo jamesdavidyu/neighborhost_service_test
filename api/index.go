@@ -49,7 +49,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	enhancedRouter := enableCORS(jsonContentTypeMiddleware(router))
 
-	log.Fatal(http.ListenAndServe(":8000", enhancedRouter))
+	log.Fatal(http.ListenAndServe("https://neighborhost-service.vercel.app/", enhancedRouter))
 }
 
 func enableCORS(next http.Handler) http.Handler {
